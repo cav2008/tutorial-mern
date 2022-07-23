@@ -4,6 +4,8 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
+import postRoutes from '@routes/post';
+
 const app = express();
 const PORT = process.env.PORT || 8000;
 // connect to mongodb atlas.
@@ -15,7 +17,10 @@ app.use(bodyParser.json({ limit: '30mb' }));
 app.use(bodyParser.urlencoded({ limit: '30mb' }));
 // allows cors.
 app.use(cors());
+// our routes.
+app.use('/posts', postRoutes);
 
+// connect to mongoDB
 mongoose
   .connect(DB_URL)
   .then(() => {
@@ -26,7 +31,3 @@ mongoose
   .catch((error) => {
     console.log(error.message);
   });
-
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
