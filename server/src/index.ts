@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
-import postRoutes from '@routes/post';
+import postsRoutes from '@routes/posts';
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ limit: '30mb' }));
 // allows cors.
 app.use(cors());
 // our routes.
-app.use('/posts', postRoutes);
+app.use('/posts', postsRoutes);
 
 // connect to mongoDB
 mongoose
