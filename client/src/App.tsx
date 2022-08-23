@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 
+import { useAppDispatch } from 'hooks/reduxHooks';
+
+import { getPosts } from 'actions/posts';
 import Posts from 'components/Posts';
 import Form from 'components/Form';
 
@@ -9,6 +12,11 @@ import useStyles from './App.styles';
 
 const App = (): React.ReactElement => {
   const classes = useStyles();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
 
   return (
     <Container maxWidth="lg">
@@ -32,6 +40,6 @@ const App = (): React.ReactElement => {
       </Grow>
     </Container>
   );
-}
+};
 
 export default App;
