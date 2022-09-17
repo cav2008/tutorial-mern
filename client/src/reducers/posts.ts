@@ -7,7 +7,7 @@ const postReducer = (state = [], action: any) => {
     case FETCH_ALL:
       return action.payload;
     case CREATE:
-      return state;
+      return [...state, action.payload];
     default:
       return state;
   }

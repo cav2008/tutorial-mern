@@ -9,6 +9,8 @@ const Posts = (): React.ReactElement => {
   const classes = useStyles();
   const posts = useAppSelector((state) => state.posts);
 
+  console.log(posts);
+
   return (
     <>
       <h1>Posts</h1>
